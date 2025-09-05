@@ -4,6 +4,6 @@ sources:
     schema: HUMANRESOURCES
     tables:
       - name: employee
-      - name: employeedepartmenthistory
+      - name: EMPLOYEEDEPARTMENTHISTORY
       - name: department
       - name: shift
