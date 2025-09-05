@@ -3,7 +3,7 @@ version: '1.0'
 config-version: 2
 
 profile: 'Development'
-model-paths: ["acumenbi/models"]
+model-paths: ["models"]
 
 # Variables for database/schema names
 vars:
