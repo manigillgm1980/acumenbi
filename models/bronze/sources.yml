@@ -1,0 +1,9 @@
+sources:
+  - name: adventureworks
+    database: "{{ var('adventureworks_db') }}"
+    schema: HUMANRESOURCES
+    tables:
+      - name: employee
+      - name: employeedepartmenthistory
+      - name: department
+      - name: shift

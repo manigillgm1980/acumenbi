@@ -1,0 +1,25 @@
+name: 'AcumenBI'
+version: '1.0'
+config-version: 2
+
+profile: 'Development'
+model-paths: ["acumenbi/models"]
+
+# Variables for database/schema names
+vars:
+  adventureworks_db: "ACUMENBI_ADVENTUREWORKS"
+
+models:
+  AcumenBI:
+
+    # Bronze layer
+    bronze:
+      +materialized: view
+      +database: ACUMENBI
+      +schema: "BRONZE"
+
+    # Silver layer
+    silver:
+      +materialized: table
+      +database: ACUMENBI
+      +schema: "SILVER"
