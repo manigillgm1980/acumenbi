@@ -4,7 +4,7 @@
 ) }}
 
 select
-    {{ dbt_utils.generate_surrogate_key(['regionid']) }} as region_surrogate_key,
+    {{ dbt_utils.generate_surrogate_key(['regionid']) }} as region_sk,
     regionid,
     region
 from {{ ref('transform_dimRegion') }}

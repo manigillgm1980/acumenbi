@@ -7,7 +7,7 @@ select
     a.EMPLOYEEID, REPLACE(a.LOGINID, 'adventure-works\\','') AS EmployeeName
     , c.departmentid, c.departmentname
     , l.leavetype, l.leavetype_sk
-    , r.regionid, r.region
+    , IFNULL(r.regionid,99) regionid, IFNULL(r.region, 'Unknown') region
     , s.shiftid, s.shiftname
     , a.vacationhours
     , 0 sickleavehours
@@ -26,7 +26,7 @@ select
     a.EMPLOYEEID, REPLACE(a.LOGINID, 'adventure-works\\','') AS EmployeeName
     , c.departmentid, c.departmentname
     , l.leavetype, l.leavetype_sk
-    , r.regionid, r.region
+    , IFNULL(r.regionid,99) regionid, IFNULL(r.region, 'Unknown') region
     , s.shiftid, s.shiftname
     , 0 vacationhours
     , a.sickleavehours
