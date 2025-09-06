@@ -1,43 +1,50 @@
+version: 2
+
 models:
   - name: factLeave
-    description: "Fact table for employee leave with foreign keys to dimensions."
+    description: "Fact table for employee leave data"
     columns:
       - name: employeeid
-        description: "Surrogate key for employee"
+        description: "FK to employee"
         tests:
           - not_null
           - relationships:
-              to: ref('dimEmployee')
-              field: employeeid
+              arguments:
+                to: ref('dimEmployee')
+                field: employeeid
+
       - name: department_sk
-        description: "Surrogate key for department"
+        description: "FK to department"
         tests:
           - not_null
           - relationships:
-              to: ref('dimDepartment')
-              field: department_sk
+              arguments:
+                to: ref('dimDepartment')
+                field: department_sk
+
       - name: leavetype_sk
-        description: "Surrogate key for leave type"
+        description: "FK to leave type"
         tests:
           - not_null
           - relationships:
-              to: ref('dimLeaveType')
-              field: leavetype_sk
+              arguments:
+                to: ref('dimLeaveType')
+                field: leavetype_sk
+
       - name: region_sk
-        description: "Surrogate key for region"
+        description: "FK to region"
         tests:
           - not_null
           - relationships:
-              to: ref('dimRegion')
-              field: region_sk
+              arguments:
+                to: ref('dimRegion')
+                field: region_sk
+
       - name: shift_sk
-        description: "Surrogate key for shift"
+        description: "FK to shift"
         tests:
           - not_null
           - relationships:
-              to: ref('dimShift')
-              field: shift_sk
-      - name: vacationhours
-        description: "Number of vacation hours taken"
-      - name: sickleavehours
-        description: "Number of sick leave hours taken"
+              arguments:
+                to: ref('dimShift')
+                field: shift_sk
