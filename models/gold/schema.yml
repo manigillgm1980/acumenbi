@@ -1,5 +1,5 @@
 models:
-  - name: factleave
+  - name: factLeave
     description: "Fact table for employee leave with foreign keys to dimensions."
     columns:
       - name: employeeid
