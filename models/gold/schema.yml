@@ -3,7 +3,7 @@ models:
   - name: factLeave
     description: "Fact table for employee leave data"
     columns:
-      - name: employeeid
+      - name: employee_sk
         description: "FK to employee"
         tests:
           - not_null
