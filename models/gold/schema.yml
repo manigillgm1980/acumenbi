@@ -5,46 +5,41 @@ models:
     description: "Fact table for employee leave data"
     columns:
       - name: employeeid
-        description: "FK to employee"
+        description: "Foreign key to the employee dimension table"
         tests:
           - not_null
           - relationships:
-              arguments:
-                to: ref('dimEmployee')
-                field: employeeid
+              to: ref('dimEmployee')
+              field: employeeid
 
       - name: department_sk
-        description: "FK to department"
+        description: "Foreign key to the department dimension table"
         tests:
           - not_null
           - relationships:
-              arguments:
-                to: ref('dimDepartment')
-                field: department_sk
+              to: ref('dimDepartment')
+              field: department_sk
 
       - name: leavetype_sk
-        description: "FK to leave type"
+        description: "Foreign key to the leave type dimension table"
         tests:
           - not_null
           - relationships:
-              arguments:
-                to: ref('dimLeaveType')
-                field: leavetype_sk
+              to: ref('dimLeaveType')
+              field: leavetype_sk
 
       - name: region_sk
-        description: "FK to region"
+        description: "Foreign key to the region dimension table"
         tests:
           - not_null
           - relationships:
-              arguments:
-                to: ref('dimRegion')
-                field: region_sk
+              to: ref('dimRegion')
+              field: region_sk
 
       - name: shift_sk
-        description: "FK to shift"
+        description: "Foreign key to the shift dimension table"
         tests:
           - not_null
           - relationships:
-              arguments:
-                to: ref('dimShift')
-                field: shift_sk
+              to: ref('dimShift')
+              field: shift_sk
