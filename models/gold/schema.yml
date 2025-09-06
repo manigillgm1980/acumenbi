@@ -47,3 +47,35 @@ models:
               arguments:
                 to: ref('dimShift')
                 field: shift_sk
+
+
+  - name: dimDepartment
+    description: "Dimension table for departments in the gold schema"
+    columns:
+      - name: department_sk
+        description: "Surrogate key for the department, generated from departmentid"
+        tests:
+          - unique:
+              description: "Ensures department_sk is unique across all records"
+          - not_null:
+              description: "Ensures department_sk is not null"
+
+      - name: departmentid
+        description: "Natural key for the department from the source system"
+        tests:
+          - not_null:
+              description: "Ensures departmentid is not null"
+          - unique:
+              description: "Ensures departmentid is unique across all records"
+
+      - name: departmentname
+        description: "Name of the department"
+        tests:
+          - not_null:
+              description: "Ensures departmentname is not null"
+
+      - name: groupname
+        description: "Group or category the department belongs to"
+        tests:
+          - not_null:
+              description: "Ensures groupname is not null"
