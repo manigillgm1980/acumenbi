@@ -1,0 +1,43 @@
+models:
+  - name: factleave
+    description: "Fact table for employee leave with foreign keys to dimensions."
+    columns:
+      - name: employeeid
+        description: "Surrogate key for employee"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dimEmployee')
+              field: employeeid
+      - name: department_sk
+        description: "Surrogate key for department"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dimDepartment')
+              field: department_sk
+      - name: leavetype_sk
+        description: "Surrogate key for leave type"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dimLeaveType')
+              field: leavetype_sk
+      - name: region_sk
+        description: "Surrogate key for region"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dimRegion')
+              field: region_sk
+      - name: shift_sk
+        description: "Surrogate key for shift"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dimShift')
+              field: shift_sk
+      - name: vacationhours
+        description: "Number of vacation hours taken"
+      - name: sickleavehours
+        description: "Number of sick leave hours taken"
