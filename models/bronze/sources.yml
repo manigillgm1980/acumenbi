@@ -4,6 +4,16 @@ sources:
     schema: HUMANRESOURCES
     tables:
       - name: employee
+        description: "Employee details including leave hours and job title"
       - name: department
+        description: "Department names and groups"
       - name: shift
-      - name: employeedepartmenthistory   
+        description: "Shift names"
+      - name: employeedepartmenthistory
+        description: "Historical department and shift assignments"
+  - name: adventureworks_person
+    database: "{{ var('adventureworks_db') }}"
+    schema: PERSON
+    tables:
+      - name: person
+        description: "Person details including first and last names"

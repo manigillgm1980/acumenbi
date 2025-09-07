@@ -1,8 +1,3 @@
-{{ config(
-    materialized='table',
-    schema='silver'
-) }}
-
 select 
     a.DATE AS date_sk,
     a.BUSINESSENTITYID employee_sk, a.EmployeeName

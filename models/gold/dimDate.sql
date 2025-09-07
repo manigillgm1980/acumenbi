@@ -1,5 +1,3 @@
-{{ config(materialized='table', schema='gold') }}
-
 WITH date_series AS (
     -- Generate dates from 2007-06-30 to 2015-06-03
     SELECT
