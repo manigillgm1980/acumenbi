@@ -1,10 +1,3 @@
-
-{{ config(
-    materialized='table',
-    schema='gold'
-) }}
-
-
 SELECT a.date_sk, b.employeeid as employee_sk, c.department_sk, d.leavetype_sk, r.region_sk
 ,s.shift_sk, a.hours
 FROM {{ref("transform_factLeave")}} a

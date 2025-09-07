@@ -1,22 +1,24 @@
-{{ config(
-    materialized='table',
-    schema='silver'
-) }}
-
-SELECT 
-    BUSINESSENTITYID AS EMPLOYEEID
-    , REPLACE(LOGINID, 'adventure-works\\','') AS EmployeeName
-    , JOBTITLE
-    , IFNULL(ORGANIZATIONLEVEL,0) ORGANIZATIONLEVEL
-    , LOGINID
-    , CASE 
-        WHEN MARITALSTATUS= 'S' THEN 'Single'
-        WHEN MARITALSTATUS= 'M' THEN 'Married'
-        ELSE 'Unknown' END AS MARITALSTATUS
-    , CASE 
-        WHEN GENDER = 'M' THEN 'Male'
-        WHEN GENDER = 'F' THEN 'Female'
-        ELSE 'Unknown' END AS GENDER
-    , CASE WHEN SALARIEDFLAG = 'TRUE' THEN 'Yes' ELSE 'No' END AS SALARIED
-    , VACATIONHOURS, SICKLEAVEHOURS
-from {{ ref('vw_employee') }}
+SELECT
+    a.BUSINESSENTITYID AS EMPLOYEEID,
+    CONCAT(b.FirstName, ' ', b.LastName) AS EmployeeName,
+    a.JOBTITLE AS jobtitle,
+    IFNULL(a.ORGANIZATIONLEVEL, 0) AS organizationlevel,
+    a.LOGINID AS loginid,
+    CASE
+        WHEN a.MARITALSTATUS = 'S' THEN 'Single'
+        WHEN a.MARITALSTATUS = 'M' THEN 'Married'
+        ELSE 'Unknown'
+    END AS maritalstatus,
+    CASE
+        WHEN a.GENDER = 'M' THEN 'Male'
+        WHEN a.GENDER = 'F' THEN 'Female'
+        ELSE 'Unknown'
+    END AS gender,
+    CASE
+        WHEN a.SALARIEDFLAG = TRUE THEN 'Yes'
+        ELSE 'No'
+    END AS salaried,
+    a.VACATIONHOURS AS vacationhours,
+    a.SICKLEAVEHOURS AS sickleavehours
+FROM {{ ref('vw_employee') }} a
+LEFT JOIN {{ ref('vw_person') }} b ON a.BUSINESSENTITYID = b.BusinessEntityID

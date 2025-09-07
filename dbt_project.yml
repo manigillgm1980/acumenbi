@@ -4,23 +4,38 @@ config-version: 2
 
 profile: 'Development'
 model-paths: ["models"]
+snapshot-paths: ["snapshots"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+target-path: "target"
+log-path: "logs"
+packages-install-path: "dbt_packages"
 
-# Variables for database/schema names
 vars:
   adventureworks_db: "ACUMENBI_ADVENTUREWORKS"
 
 models:
   AcumenBI:
-
-    # Bronze layer
     bronze:
       +materialized: view
       +database: ACUMENBI
       +schema: "BRONZE"
-
-    # Silver layer
     silver:
       +materialized: table
       +database: ACUMENBI
       +schema: "SILVER"
+    gold:
+      +materialized: table
+      +database: ACUMENBI
+      +schema: "GOLD"
 
+seeds:
+  AcumenBI:
+    +schema: "BRONZE"
+    +database: ACUMENBI
+
+snapshots:
+  AcumenBI:
+    +schema: "GOLD"
+    +database: ACUMENBI
