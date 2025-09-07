@@ -5,7 +5,6 @@ config-version: 2
 profile: 'Development'
 model-paths: ["models"]
 snapshot-paths: ["snapshots"]
-seed-paths: ["seeds"]
 test-paths: ["tests"]
 macro-paths: ["macros"]
 target-path: "target"
@@ -30,10 +29,6 @@ models:
       +database: ACUMENBI
       +schema: "GOLD"
 
-seeds:
-  AcumenBI:
-    +schema: "BRONZE"
-    +database: ACUMENBI
 
 snapshots:
   AcumenBI:
